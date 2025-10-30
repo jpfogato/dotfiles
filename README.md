@@ -30,7 +30,7 @@ sudo mv neovim_config/ .config
 
 # Installation:
 
-Installation can be done automatically via the `setup_env.sh` script, or it can be manually done by following the "Dependencies" section below.
+Installation can be done automatically via the `env_setup.sh` script, or it can be manually done by following the "Dependencies" section below.
 
 To install automatically run:
 
@@ -39,7 +39,7 @@ git clone https://github.com/jpfogato/neovim_config.git
 sudo mv neovim_config/ .config
 cd ~/.config
 chmod +x env_setup.sh
-sudo env_setup.sh
+sudo ./env_setup.sh
 ```
 
 ## Dependencies
