@@ -12,24 +12,35 @@ sudo mv neovim_config/ .config
 
 ## Contained plugins:
 
-- sleuth
-- wich-key
-- treesitter
-- oil
-- kanagawa
-- treesitter-textobjects
-- statusline
-- projects
-- fzf-lua
-- lsp (yanked from kickstart.nvim)
-- Mason
-- dressing
-- rustacean
-- dressing
-- conform
-- blink (requires building from source)
+- sleuth: Auto-detects and sets file indentation.
+- which-key: Shows available keybindings in a popup.
+- treesitter: Improves syntax highlighting and code parsing.
+- oil: File explorer within a Neovim buffer.
+- kanagawa: Elegant Japanese-inspired colorscheme.
+- treesitter-textobjects: Adds syntax-aware text objects.
+- statusline: Customizable status line with file info.
+- projects: Auto-detects and manages project roots.
+- fzf-lua: Fast fuzzy finder written in Lua.
+- lsp (from kickstart.nvim): Language server integration.
+- Mason: Installs and manages LSPs, linters, and formatters.
+- dressing: Improves input/select UIs.
+- rustacean: Enhances Rust development support.
+- conform: Unified code formatter.
+- blink (requires building from source): Modern autocompletion engine.
 
 # Installation:
+
+Installation can be done automatically via the `setup_env.sh` script, or it can be manually done by following the "Dependencies" section below.
+
+To install automatically run:
+
+```bash
+git clone https://github.com/jpfogato/neovim_config.git
+sudo mv neovim_config/ .config
+cd ~/.config
+chmod +x env_setup.sh
+sudo env_setup.sh
+```
 
 ## Dependencies
 

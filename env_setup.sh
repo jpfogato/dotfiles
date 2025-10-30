@@ -71,19 +71,6 @@ sudo apt install -y python3-pip python3-venv
 echo "Python installed successfully: $(python3 --version)"
 
 #---------------------------------------------
-# Clone Neovim configuration repo
-#---------------------------------------------
-echo
-echo "Cloning Neovim config repo into ~/.config..."
-cd ~
-if [ ! -d "neovim_config" ]; then
-    git clone https://github.com/jpfogato/neovim_config.git
-fi
-mkdir -p ~/.config
-mv -f neovim_config ~/.config/nvim_config
-echo "Config placed at ~/.config/nvim_config"
-
-#---------------------------------------------
 # Post-installation step for blink.cmp
 #---------------------------------------------
 echo
