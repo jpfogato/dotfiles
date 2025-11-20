@@ -57,4 +57,6 @@ get-dependencies
 *.tmp
 *.swp
 *.swo
-.zcompdump*
+
+# Ignore zsh dump files
+/zsh/.zcompdump*
