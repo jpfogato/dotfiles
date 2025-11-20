@@ -6,6 +6,9 @@ At this stage, it contains my personal setup for:
 - Neovim
 - zsh
 
+**Warning**
+Everything you see here will be extracted directly to `~/.config` directory, so be aware of potential overwrites! 
+
 ## Dependencies
 
 ### Git
