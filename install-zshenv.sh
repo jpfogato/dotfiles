@@ -1,34 +1,59 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-# Resolve script directory (your dotfiles repo root)
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
-SOURCE_FILE="$DOTFILES_DIR/.zshenv"
-TARGET_FILE="$HOME/.zshenv"
 
-echo "Dotfiles directory: $DOTFILES_DIR"
-echo "Source file:        $SOURCE_FILE"
-echo "Target file:        $TARGET_FILE"
+# Real sources from the repo
+SRC_ZSHENV="$DOTFILES_DIR/.zshenv"
+SRC_ZSHRC="$DOTFILES_DIR/zsh/.zshrc"
+
+TARGET_ZSHENV="$HOME/.zshenv"
+TARGET_ZSHRC="$HOME/.zshrc"
+
+timestamp() { date +%s; }
+
+backup_and_remove() {
+  local target="$1"
+
+  if [ -L "$target" ]; then
+    echo "Removing existing symlink: $target"
+    rm -f "$target"
+  elif [ -e "$target" ]; then
+    local bak="${target}.backup.$(timestamp)"
+    echo "Backing up existing file: $target -> $bak"
+    mv "$target" "$bak"
+  fi
+}
+
+create_symlink() {
+  local src="$1"
+  local dest="$2"
+
+  if [ ! -e "$src" ]; then
+    echo "ERROR: Source not found: $src" >&2
+    exit 1
+  fi
+
+  # If the symlink is already correct, skip
+  if [ -L "$dest" ] && [ "$(readlink -f "$dest")" = "$(readlink -f "$src")" ]; then
+    echo "OK: Symlink already correct: $dest -> $src"
+    return
+  fi
+
+  backup_and_remove "$dest"
+
+  echo "Creating symlink: $dest -> $src"
+  ln -s "$src" "$dest"
+}
+
+echo "Dotfiles dir: $DOTFILES_DIR"
 echo
 
-# Check if .zshenv exists already
-if [ -e "$TARGET_FILE" ] || [ -L "$TARGET_FILE" ]; then
-    # If it’s a symlink pointing into the dotfiles repo, remove it safely
-    if [ -L "$TARGET_FILE" ] && [[ "$(readlink "$TARGET_FILE")" == "$SOURCE_FILE" ]]; then
-        echo "Existing symlink detected. Removing old symlink…"
-        rm "$TARGET_FILE"
-    else
-        echo "ERROR: ~/.zshenv exists and is not a symlink to your dotfiles."
-        echo "Refusing to overwrite. Please handle manually."
-        exit 1
-    fi
-fi
-
-# Create new symlink
-echo "Creating symlink:"
-echo "  $TARGET_FILE → $SOURCE_FILE"
-ln -s "$SOURCE_FILE" "$TARGET_FILE"
+create_symlink "$SRC_ZSHENV" "$TARGET_ZSHENV"
+create_symlink "$SRC_ZSHRC"  "$TARGET_ZSHRC"
 
 echo
-echo "~/.zshenv installed successfully."
+echo "Done!"
+ls -la "$TARGET_ZSHENV" || true
+ls -la "$TARGET_ZSHRC"  || true
 
