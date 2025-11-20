@@ -57,4 +57,4 @@ get-dependencies
 *.tmp
 *.swp
 *.swo
-
+.zcompdump*
