@@ -37,10 +37,19 @@ For additional Neovim dependencies, check `./nvim/README.md`
 ## Setup
 Clone this repository inside `~/.config/dotfiles`, then extract the contents of it using `stow`.
 
-```
+```bash
 cd ~/.config
 mkdir dotfiles
 cd dotfiles
 git clone git@github.com:jpfogato/dotfiles.git .
 stow .
 ```
+
+It is also required to run some installation scripts to avoid manual labor
+
+```bash
+cd ~/.config/dotfiles
+chmod +x install-zshenv.sh
+./install-zshenv.sh
+```
+
