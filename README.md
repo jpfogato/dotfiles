@@ -1,116 +1,69 @@
-# Neovim settings repository
+# Dotfiles
 
-This repository holds my Neovim plugins and their settings. 
-The goal for the future is also to provide a shell script to install all dependencies so the repo can spin up automatically after clonning and running the installation script.
+This repository was setup to help me preserve and port my configuration to a new Debian installation.
+At this stage, it contains my personal setup for:
 
-Clone it and add it to the `~/.config` directory
+- neovim
+- zsh
+- tmux
 
-```bash
-git clone https://github.com/jpfogato/neovim_config.git
-sudo mv neovim_config/ .config
-```
+**Warning**:
 
-## Contained plugins:
-
-- sleuth: Auto-detects and sets file indentation.
-- which-key: Shows available keybindings in a popup.
-- treesitter: Improves syntax highlighting and code parsing.
-- oil: File explorer within a Neovim buffer.
-- kanagawa: Elegant Japanese-inspired colorscheme.
-- treesitter-textobjects: Adds syntax-aware text objects.
-- statusline: Customizable status line with file info.
-- projects: Auto-detects and manages project roots.
-- fzf-lua: Fast fuzzy finder written in Lua.
-- lsp (from kickstart.nvim): Language server integration.
-- Mason: Installs and manages LSPs, linters, and formatters.
-- dressing: Improves input/select UIs.
-- rustacean: Enhances Rust development support.
-- conform: Unified code formatter.
-- blink (requires building from source): Modern autocompletion engine.
-
-# Installation:
-
-Installation can be done automatically via the `env_setup.sh` script, or it can be manually done by following the "Dependencies" section below.
-
-To install automatically run:
-
-```bash
-git clone https://github.com/jpfogato/neovim_config.git
-sudo mv neovim_config/ .config
-cd ~/.config
-chmod +x env_setup.sh
-sudo ./env_setup.sh
-```
+Everything you see here will be extracted directly to `~/.config` directory, so be aware of potential overwrites! 
 
 ## Dependencies
 
-### Environment
-Will install the building tools for building neovim from source to ensure we get the latest one available for plugin support
+### Git
+Required if wished to modify and commit settings directly to this repo
+
+```sudo apt install git```
+
+### Stow
+A GNU symlink farm manager used to deploy these settings after cloning.
 
 ```bash
-sudo apt update
-sudo apt install build-essential cmake gettext libtool libtool-bin autoconf automake pkg-config unzip git
+sudo apt install stow
 ```
-**Recomended:** Ensure no remaining Neovim installation is in the system by `sudo apt purge --autoremove neovim`
 
-Download and install Neovim
+### Zshell (zsh)
+A shell environment alternative to Bash with a lot of cool features and plugins already preconfigured with with (PowerLevel10k)[https://github.com/romkatv/powerlevel10k]
 
 ```bash
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout stable
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
-exec bash
-nvim --version
-cd ..
-rm -rf neovim
+sudo apt install zsh
+sudo apt install zsh-autosuggestion zsh-syntax-highlighting
 ```
 
-### Rust
-Required by lsp and blink and lsp support for Rust.
-Run the commands below to have the nigtly builds set as default toolchain for Rust
+### Neovim
+My text editor of choice
 
 ```bash
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
-exec bash
-cargo -V
-rustup toolchain install nightly
-cd ~
-rustup override set nightly
-rustup show
-rustup component add rust-analyzer
+sudo apt install neovim
 ```
 
-this should download and install rust, restart the shell and ensure it is in $PATH, then install the nightly builds, and then set it as default rust toolchian
+For additional Neovim dependencies, check `./nvim/README.md`
 
-### Lua
-Required as it is the language selected for lazy.nvim plugin manager
-```bash
-sudo apt install lua5.x (change x for latest one available)
-```
-
-### Node.js
-required by prettier and bash-language-server support
+### fzf
+Fuzzy text finder
 
 ```bash
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install nodejs -y
+sudo apt install fzf
 ```
 
-### Python
-required for autopep8 python support
+## Setup
+Clone this repository inside `~/.config/dotfiles`, then extract the contents of it using `stow`.
 
 ```bash
-sudo apt install python3-pip -y
-sudo apt install python3.12-venv
+cd ~/.config
+git clone --depth=1 git@github.com:jpfogato/dotfiles.git dotfiles
+cd dotfiles
+stow .
 ```
 
-## Post-install 
-After installing everything, we will need to compile blink from source as it is failing to do so on install.
-Run neovim for the firt time, then close it after all plugins are installed.
+It is also required to run some installation scripts to avoid manual labor
 
 ```bash
-cd ~/.local/share/nvim/lazy/blink.cmp
-cargo +nightly build --release
+cd ~/.config/dotfiles
+chmod +x install-zshenv.sh
+./install-zshenv.sh
 ```
+
