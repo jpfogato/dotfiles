@@ -42,6 +42,12 @@ sudo apt install neovim
 
 For additional Neovim dependencies, check `./nvim/README.md`
 
+### fzf
+Fuzzy text finder
+
+```bash
+sudo apt install fzf
+```
 
 ## Setup
 Clone this repository inside `~/.config/dotfiles`, then extract the contents of it using `stow`.
