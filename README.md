@@ -3,10 +3,12 @@
 This repository was setup to help me preserve and port my configuration to a new Debian installation.
 At this stage, it contains my personal setup for:
 
-- Neovim
+- neovim
 - zsh
+- tmux
 
-**Warning**
+**Warning**:
+
 Everything you see here will be extracted directly to `~/.config` directory, so be aware of potential overwrites! 
 
 ## Dependencies
@@ -19,17 +21,24 @@ Required if wished to modify and commit settings directly to this repo
 ### Stow
 A GNU symlink farm manager used to deploy these settings after cloning.
 
-```sudo apt install stow```
+```bash
+sudo apt install stow
+```
 
-### zsh
-A shell environment alternative to Bash with a lot of cool features and plugins already preconfigured with OMZ.
+### Zshell (zsh)
+A shell environment alternative to Bash with a lot of cool features and plugins already preconfigured with with (PowerLevel10k)[https://github.com/romkatv/powerlevel10k]
 
-```sudo apt install zsh```
+```bash
+sudo apt install zsh
+sudo apt install zsh-autosuggestion zsh-syntax-highlighting
+```
 
 ### Neovim
 My text editor of choice
 
-```sudo apt install neovim```
+```bash
+sudo apt install neovim
+```
 
 For additional Neovim dependencies, check `./nvim/README.md`
 
@@ -39,9 +48,8 @@ Clone this repository inside `~/.config/dotfiles`, then extract the contents of 
 
 ```bash
 cd ~/.config
-mkdir dotfiles
+git clone --depth=1 git@github.com:jpfogato/dotfiles.git dotfiles
 cd dotfiles
-git clone git@github.com:jpfogato/dotfiles.git .
 stow .
 ```
 
