@@ -3,8 +3,8 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Real sources from the repo
-SRC_ZSHENV="$DOTFILES_DIR/.zshenv"
+# Updated sources from the repo
+SRC_ZSHENV="$DOTFILES_DIR/zshenv"
 SRC_ZSHRC="$DOTFILES_DIR/zsh/.zshrc"
 
 TARGET_ZSHENV="$HOME/.zshenv"

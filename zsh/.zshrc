@@ -100,6 +100,7 @@ alias c='clear'
 alias vim='nvim'
 
 # Shell integrations
-# fzf
+# fzf, rust, etc..
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+source ~/.cargo/env
