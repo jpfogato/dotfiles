@@ -49,6 +49,13 @@ Fuzzy text finder
 sudo apt install fzf
 ```
 
+### fd-find
+File finder, better alternative to `fs` for piping folder contents to fzf
+
+```bash
+sudo apt isntall fd-find
+```
+
 ## Setup
 Clone this repository inside `~/.config/dotfiles`, then extract the contents of it using `stow`.
 

@@ -1,4 +1,3 @@
-# export ZDOTDIR="$HOME/.config/zsh"
-echo ">>> zshenv loaded" >&2
+export ZDOTDIR="$HOME/.config/zsh"
 # loads Rust toolchain
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

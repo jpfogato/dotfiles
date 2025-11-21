@@ -97,7 +97,14 @@ bindkey '^n' history-search-forward
 # Aliases
 alias ls='ls --color' # adds coloring to ls return
 alias c='clear'
+alias e='exit'
 alias vim='nvim'
+alias fd='fdfind'
+# pipes the content of the file into fzf who opens a pop-up window and allows the selected
+# element to be opened with nvim afterwards
+alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs -r nvim'
+
+
 
 # Shell integrations
 # fzf, rust, etc..
