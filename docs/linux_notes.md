@@ -121,6 +121,7 @@ Ubuntu uses "apt" for package management
 	<left | right arrow> > switches between the panes in the window
 	% > splits terminals horizontally (adds a column)
 	" > splits terminals vertically (adds a row)
+	x > closes an opened pane
 	d > detaches from the current session
 	s > display current sessions
 	$ > renames a session
