@@ -5,6 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export ZDOTDIR="$HOME/.config/zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 # using zinit as a plugin manager
 # we need to set the env variable as such:
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -97,7 +103,14 @@ bindkey '^n' history-search-forward
 # Aliases
 alias ls='ls --color' # adds coloring to ls return
 alias c='clear'
+alias e='exit'
 alias vim='nvim'
+alias fd='fdfind'
+# pipes the content of the file into fzf who opens a pop-up window and allows the selected
+# element to be opened with nvim afterwards
+alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs -r nvim'
+alias lsym='ls -lhaF | grep ^l'
+
 
 # Shell integrations
 # fzf, rust, etc..
