@@ -1,0 +1,2 @@
+# sets the zsh location just in case ;)
+export ZDOTDIR="$HOME/.config/zsh"
