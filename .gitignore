@@ -59,4 +59,4 @@ get-dependencies
 *.swo
 
 # Ignore zsh dump files
-/zsh/.zcompdump*
+./config_files/zsh/.zcompdump*

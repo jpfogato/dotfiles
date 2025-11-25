@@ -3,9 +3,9 @@
 This repository was setup to help me preserve and port my configuration to a new Debian installation.
 At this stage, it contains my personal setup for:
 
-- neovim
-- zsh
-- tmux
+- [Neovim](https://github.com/neovim/neovim/tree/master)
+- [Z shell](https://www.zsh.org/)
+- [tmux](https://github.com/tmux/tmux)
 
 > **Warning**
 >
@@ -13,58 +13,34 @@ At this stage, it contains my personal setup for:
 
 ## Dependencies
 
-### Git
-Required if wished to modify and commit settings directly to this repo
+### Z shell (zsh)
+A shell environment alternative to Bash with a lot of cool features and plugins already preconfigured with with [PowerLevel10k](https://github.com/romkatv/powerlevel10k).
 
-```bash
-sudo apt install git
-```
-
-### Stow
-A GNU symlink farm manager used to deploy these settings after cloning.
-
-```bash
-sudo apt install stow
-```
-
-### Zshell (zsh)
-A shell environment alternative to Bash with a lot of cool features and plugins already preconfigured with with (PowerLevel10k)[https://github.com/romkatv/powerlevel10k]
-
-```bash
-sudo apt install zsh
-sudo apt install zsh-autosuggestion zsh-syntax-highlighting
-```
+### tmux
+Terminal manager
 
 ### Neovim
 My text editor of choice
 
-```bash
-sudo apt install neovim
-```
+ > Important
+ > 
+ > To support the selected plugins and LSP, Neovim must be installed from the latest stable version. Check [nvim's README file](./config_files/nvim/README.md) for installation guide.
 
-For additional Neovim dependencies, check `.config_files/nvim/README.md`
+## Installation and Setup
 
-### fzf
-Fuzzy text finder
-
-```bash
-sudo apt install fzf
-```
-
-### fd-find
-File finder, better alternative to `fs` for piping folder contents to fzf
+Install the dependencies by copying and pasting the command below:
 
 ```bash
-sudo apt isntall fd-find
+sudo apt install -y git stow zsh zsh-autosuggestions zsh-syntax-highlighting fzf fd-find tmux build-essential cmake gettext libtool libtool-bin autoconf automake pkg-config unzip nodejs python3-pip python3.12-venv lua5.4 
 ```
 
-## Setup
-Clone this repository inside `~/.config/dotfiles`, then run the installation script.
+Then clone this repository inside `~/.config/dotfiles`, and run the installation script:
 
 ```bash
 cd ~/.config
 git clone --depth=1 git@github.com:jpfogato/dotfiles.git dotfiles
 cd dotfiles
 chmod +x install.sh
+./install.sh
 ```
 

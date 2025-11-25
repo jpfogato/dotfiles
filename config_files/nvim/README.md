@@ -1,14 +1,6 @@
 # Neovim settings repository
 
 This repository holds my Neovim plugins and their settings. 
-The goal for the future is also to provide a shell script to install all dependencies so the repo can spin up automatically after clonning and running the installation script.
-
-Clone it and add it to the `~/.config` directory
-
-```bash
-git clone https://github.com/jpfogato/neovim_config.git
-sudo mv neovim_config/ .config
-```
 
 ## Contained plugins:
 
@@ -32,12 +24,10 @@ sudo mv neovim_config/ .config
 
 Installation can be done automatically via the `env_setup.sh` script, or it can be manually done by following the "Dependencies" section below.
 
-To install automatically run:
+To install automatically first run `./install.sh` from [root](/), then:
 
 ```bash
-git clone https://github.com/jpfogato/neovim_config.git
-sudo mv neovim_config/ .config
-cd ~/.config
+cd ~/.config/nvim
 chmod +x env_setup.sh
 sudo ./env_setup.sh
 ```
@@ -61,7 +51,7 @@ cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
-exec bash
+exec zsh
 nvim --version
 cd ..
 rm -rf neovim
@@ -73,7 +63,7 @@ Run the commands below to have the nigtly builds set as default toolchain for Ru
 
 ```bash
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
-exec bash
+exec zsh
 cargo -V
 rustup toolchain install nightly
 cd ~
@@ -87,7 +77,7 @@ this should download and install rust, restart the shell and ensure it is in $PA
 ### Lua
 Required as it is the language selected for lazy.nvim plugin manager
 ```bash
-sudo apt install lua5.x (change x for latest one available)
+sudo apt install lua5.4
 ```
 
 ### Node.js
