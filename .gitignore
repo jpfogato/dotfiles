@@ -60,3 +60,5 @@ get-dependencies
 
 # Ignore zsh dump files
 /zsh/.zcompdump*
+/zsh/zcompdump*
+.zcompdump*
