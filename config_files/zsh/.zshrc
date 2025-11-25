@@ -101,7 +101,6 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # Aliases
-alias ls='ls --color' # adds coloring to ls return
 alias c='clear'
 alias e='exit'
 alias vim='nvim'
@@ -110,6 +109,29 @@ alias fd='fdfind'
 # element to be opened with nvim afterwards
 alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs -r nvim'
 alias lsym='ls -lhaF | grep ^l'
+# tree alias to browse through git repos faster
+alias tmg='tree --gitignore -aL 3 -I .git .vscode'
+
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
 # Shell integrations
