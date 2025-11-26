@@ -139,3 +139,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 source ~/.cargo/env
+
+# To customize prompt, run `p10k configure` or edit ~/.config/dotfiles/config_files/zsh/.p10k.zsh.
+[[ ! -f ~/.config/dotfiles/config_files/zsh/.p10k.zsh ]] || source ~/.config/dotfiles/config_files/zsh/.p10k.zsh
