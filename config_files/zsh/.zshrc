@@ -110,7 +110,7 @@ alias fd='fdfind'
 alias v='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs -r nvim'
 alias lsym='ls -lhaF | grep ^l'
 # tree alias to browse through git repos faster
-alias tmg='tree --gitignore -aL 3 -I .git .vscode'
+alias tmg='tree --gitignore -aL 3 -I .git'
 
 
 # enable color support of ls and also add handy aliases
